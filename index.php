@@ -7,6 +7,13 @@ include_once 'Config/database.php';
 
 // delete message prompt will be here
 
+$action = isset($_GET['action']) ? $_GET['action'] : "";
+
+// if it was redirected from delete.php
+if ($action == 'deleted') {
+    echo "<div class='alert alert-success'>Record was deleted.</div>";
+}
+
 // select all data
 $query =
     "SELECT id, name, description, price 
@@ -123,6 +130,17 @@ $num = $stmt->rowCount();
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- confirm delete record will be here -->
+    <script>
+        // confirm record deletion
+        function delete_product(id) {
+
+            var answer = confirm('Are you sure?');
+            if (answer) {
+                // if user clicked ok, pass the id to delete.php and execute the delete query
+                window.location = 'delete.php?id=' + id;
+            }
+        }
+    </script>
 
 </body>
 
