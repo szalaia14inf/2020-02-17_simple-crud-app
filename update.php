@@ -131,4 +131,12 @@ if ($_POST) {
 
 </body>
 
+<?php if (isset($success)) :
+    if ($success) : ?>
+        <div class="alert alert-success">Record was updated.</div>
+    <?php else : ?>
+        <div class="alert alert-danger">Unable to update record. Please try again.</div>
+<?php endif;
+endif; ?>
+
 </html>
